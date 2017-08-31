@@ -10,21 +10,25 @@
         list-style: none;
         margin: 5px;
       }
+      button {
+        margin-right: 10px;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <h2>Todo List</h2>
       <form class="" action="/" method="post">
-        <input type="text" name="task" value="" placeholder="Enter Your Task Here">
+        <input type="text" name="task" value="" placeholder="Enter Your Task Here" autofocus>
         <button type="submit" name="add">Add Todo</button>
       </form>
       <ul class="todo-list">
         {{#todos}}
             {{^isComplete}}
-            <form class="" action="/complete" method="post">
+            <form class="" action="/complete/{{id}}" method="post">
               <li>
               <button type="submit" name="marked" value="{{id}}">Mark as Complete</button>
+              <a href="/edit/{{id}}"><button type="button" name="button">Edit</button></a>
               {{task}}
               </li>
             </form>
@@ -37,6 +41,7 @@
         {{#todos}}
             {{#isComplete}}
               <li>
+                <a href="/delete/{{id}}"><button type="button" name="button">Delete</button></a>
               {{task}}
               </li>
             {{/isComplete}}
