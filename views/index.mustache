@@ -17,30 +17,30 @@
       <h2>Todo List</h2>
       <form class="" action="/" method="post">
         <input type="text" name="task" value="" placeholder="Enter Your Task Here">
-        <button type="submit" name="complete">Add Todo</button>
+        <button type="submit" name="add">Add Todo</button>
       </form>
       <ul class="todo-list">
-        {{#list}}
+        {{#todos}}
             {{^isComplete}}
             <form class="" action="/complete" method="post">
               <li>
-              <button type="submit" name="marked" value="{{todo}}">Mark as Complete</button>
-              {{todo}}
+              <button type="submit" name="marked" value="{{id}}">Mark as Complete</button>
+              {{task}}
               </li>
             </form>
             {{/isComplete}}
-        {{/list}}
+        {{/todos}}
       </ul>
       <!-- Populate completed task when their button is clicked -->
       <h2>Completed Tasks</h2>
       <ul class="completed-list">
-        {{#list}}
+        {{#todos}}
             {{#isComplete}}
               <li>
-              {{todo}}
+              {{task}}
               </li>
             {{/isComplete}}
-        {{/list}}
+        {{/todos}}
       </ul>
     </div>
   </body>
